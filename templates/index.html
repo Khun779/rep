@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">
+                    <i class="bi bi-download"></i> Download Video
+                </h2>
+                
+                <form id="downloadForm" class="mb-4">
+                    <div class="mb-3">
+                        <label for="videoUrl" class="form-label">Video URL</label>
+                        <div class="input-group">
+                            <input type="url" class="form-control" id="videoUrl" 
+                                   placeholder="Enter video URL" required>
+                            <button type="button" class="btn btn-secondary" id="fetchFormats">
+                                <i class="bi bi-search"></i> Get Formats
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3" id="formatSelectContainer" style="display: none;">
+                        <label for="formatSelect" class="form-label">Select Format</label>
+                        <select class="form-select" id="formatSelect" required>
+                            <option value="">Choose format...</option>
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" id="downloadBtn" disabled>
+                            <i class="bi bi-download"></i> Download
+                        </button>
+                    </div>
+                </form>
+
+                <div id="downloadProgress" style="display: none;">
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                             role="progressbar" style="width: 0%">0%</div>
+                    </div>
+                    <div class="text-center" id="downloadStatus">
+                        Preparing download...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4" id="downloadHistory">
+            <h3 class="mb-3">Download History</h3>
+            <div class="list-group" id="historyList">
+                <!-- Download history items will be added here -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
